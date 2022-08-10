@@ -67,7 +67,7 @@ $(document).ready(() => {
 
 
             var winDir = value['current']['wind_dir']
-            console.log("Win Dir : " + winDir1);
+            console.log("Win Dir : " + winDir);
             if (winDir == 'E')
                 $('#wind_dir').html("Wind Dir: East")
             else if (winDir == 'W')
@@ -79,7 +79,7 @@ $(document).ready(() => {
             else if (winDir == 'SSW')
                 $('#wind_dir').html("Wind Dir: South West")
             else
-                $('#wind_dir').html(winDir)
+                $('#wind_dir').html("Win Dir: "+winDir)
 
 
             $('#image').html(`<img src="${value['current']['condition']['icon']}" alt="Error">`)
