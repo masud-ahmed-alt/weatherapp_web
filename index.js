@@ -39,8 +39,9 @@ $(document).ready(() => {
 
     function updateUI(data) {
         if (data.length < 100) {
-            $('#feel_temp').html('<span class="text-warning">No matching location found.</span>')
+            $('#warn_search').html("No matching location found.")
         } else {
+            $('#warn_search').html("")
             var value = $.parseJSON(data)
             $('#c_name').html(value['location']['name'] + ' , ' + value['location']['region'] + ' , ' + value['location']['country'])
             // Last Update Time date 
@@ -65,22 +66,24 @@ $(document).ready(() => {
             // $('#').html("Air Quality: "+value['current']['uv']+"/10")
 
 
-            var winDir1 = value['current']['wind_dir']
-            console.log("Win Dir : "+winDir1);
-            if (winDir1 == 'E')
+            var winDir = value['current']['wind_dir']
+            console.log("Win Dir : " + winDir1);
+            if (winDir == 'E')
                 $('#wind_dir').html("Wind Dir: East")
-            else if (winDir1 == 'W')
+            else if (winDir == 'W')
                 $('#wind_dir').html("Wind Dir: West")
-            else if (winDir1 == 'S')
+            else if (winDir == 'S')
                 $('#wind_dir').html("Wind Dir: South")
-            else if (winDir1 == 'N')
+            else if (winDir == 'N')
                 $('#wind_dir').html("Wind Dir: North")
-            else if (winDir1 == 'SSW')
+            else if (winDir == 'SSW')
                 $('#wind_dir').html("Wind Dir: South West")
+            else
+                $('#wind_dir').html(winDir)
 
 
             $('#image').html(`<img src="${value['current']['condition']['icon']}" alt="Error">`)
-            
+
             // Local Time 
             var l_time = value['location']['localtime']
             var d = new Date(l_time);
